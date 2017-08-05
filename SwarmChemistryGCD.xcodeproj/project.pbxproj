@@ -203,9 +203,11 @@
 				TargetAttributes = {
 					3E8F328119A67DA000CC7E7D = {
 						CreatedOnToolsVersion = 6.0;
+						LastSwiftMigration = 0830;
 					};
 					3E8F329319A67DA000CC7E7D = {
 						CreatedOnToolsVersion = 6.0;
+						LastSwiftMigration = 0830;
 						TestTargetID = 3E8F328119A67DA000CC7E7D;
 					};
 				};
@@ -382,6 +384,7 @@
 				INFOPLIST_FILE = SwarmChemistryGCD/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -393,6 +396,7 @@
 				INFOPLIST_FILE = SwarmChemistryGCD/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -411,6 +415,7 @@
 				INFOPLIST_FILE = SwarmChemistryGCDTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwarmChemistryGCD.app/SwarmChemistryGCD";
 			};
 			name = Debug;
@@ -426,6 +431,7 @@
 				INFOPLIST_FILE = SwarmChemistryGCDTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwarmChemistryGCD.app/SwarmChemistryGCD";
 			};
 			name = Release;

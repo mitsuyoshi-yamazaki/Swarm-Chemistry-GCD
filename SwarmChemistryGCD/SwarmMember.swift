@@ -53,7 +53,7 @@ struct SwarmMember
         }
     }
     
-    mutating func accelerate(#ax : Double, ay : Double, maxMove : Double)
+    mutating func accelerate(#ax : Double, _ ay : Double, maxMove : Double)
     {
         dx2 += ax;
         dy2 += ay;

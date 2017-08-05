@@ -9,18 +9,18 @@
 import Foundation
 import UIKit;
 
-public class SwarmGenome
+open class SwarmGenome
 {
-    public var color : UIColor;
+    open var color : UIColor;
     
-    public var normalSpeed : Double = 1;
-    public var maximumSpeed : Double = 2;
-    public var radius : Double;
-    public var c1_cohesion : Double; // 1: 0 -> 5
-    public var c2_alignment : Double; // 2: 0 -> 1
-    public var c3_seperation : Double; // 3: 0 -> 100
-    public var c4_steering : Double; // 4: 0 -> 1
-    public var c5_paceKeeping : Double; // 5: 0 -> 1
+    open var normalSpeed : Double = 1;
+    open var maximumSpeed : Double = 2;
+    open var radius : Double;
+    open var c1_cohesion : Double; // 1: 0 -> 5
+    open var c2_alignment : Double; // 2: 0 -> 1
+    open var c3_seperation : Double; // 3: 0 -> 100
+    open var c4_steering : Double; // 4: 0 -> 1
+    open var c5_paceKeeping : Double; // 5: 0 -> 1
     
     init(color : UIColor, radius : Double, c1_cohesion : Double, c2_alignment : Double, c3_seperation : Double, c4_steering : Double, c5_paceKeeping : Double)
     {
@@ -33,7 +33,7 @@ public class SwarmGenome
         self.c5_paceKeeping = c5_paceKeeping;
     }
     
-    func setPropertyValueByIndex(newValue : Float, propertyIndex : Int)
+    func setPropertyValueByIndex(_ newValue : Float, propertyIndex : Int)
     {
         switch(propertyIndex)
         {
@@ -54,7 +54,7 @@ public class SwarmGenome
         }
     }
     
-    func getPropertyValueByIndex(propertyIndex : Int) -> Float
+    func getPropertyValueByIndex(_ propertyIndex : Int) -> Float
     {
         var returnObject : Float?;
         
@@ -79,7 +79,7 @@ public class SwarmGenome
         return returnObject!;
     }
     
-    class func getMinMaxForProperty(propertyIndex : Int) -> (min: Float, max: Float)
+    class func getMinMaxForProperty(_ propertyIndex : Int) -> (min: Float, max: Float)
     {
         var returnObject : (min: Float, max: Float)?;
         

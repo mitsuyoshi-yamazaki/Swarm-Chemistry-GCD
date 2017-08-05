@@ -28,13 +28,13 @@ class ViewController: UIViewController
     {
         super.viewDidLoad()
         
-        for var i = 0; i < Constants.COUNT; i++
+        for i in 0 ..< Constants.COUNT
         {
             let genome : SwarmGenome = genomes[i % 4];
             var swarmMember : SwarmMember = SwarmMember(genome: genome);
             
-            swarmMember.x = Double(Int(rand()) % Int(Constants.WIDTH));
-            swarmMember.y = Double(Int(rand()) % Int(Constants.HEIGHT));
+            swarmMember.x = Double(Int(arc4random()) % Int(Constants.WIDTH));
+            swarmMember.y = Double(Int(arc4random()) % Int(Constants.HEIGHT));
             
             swarmMembers.append(swarmMember);
         }
@@ -89,19 +89,19 @@ class ViewController: UIViewController
     
     // event handlers
     
-    @IBAction func genomeSelectionButtonBarChangeHandler(sender: AnyObject)
+    @IBAction func genomeSelectionButtonBarChangeHandler(_ sender: AnyObject)
     {
         selectedGenomeIndex = genomeSelectionButtonBar.selectedSegmentIndex;
         setPropertySliderValue()
     }
     
-    @IBAction func propertyButtonBarChangeHandler(sender: AnyObject)
+    @IBAction func propertyButtonBarChangeHandler(_ sender: AnyObject)
     {
         setPropertSliderMinMax();
         setPropertySliderValue();
     }
     
-    @IBAction func propertySliderChangeHandler(sender: AnyObject)
+    @IBAction func propertySliderChangeHandler(_ sender: AnyObject)
     {
         setGenomeValue();
     }

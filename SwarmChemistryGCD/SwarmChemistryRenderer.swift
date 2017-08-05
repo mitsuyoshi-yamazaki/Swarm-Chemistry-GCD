@@ -22,24 +22,24 @@ struct PixelData
 private let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
 private let bitmapInfo:CGBitmapInfo = CGBitmapInfo(CGImageAlphaInfo.PremultipliedFirst.toRaw())
 
-private func imageFromARGB32Bitmap(pixels:[PixelData], width:UInt, height:UInt)->UIImage
+private func imageFromARGB32Bitmap(_ pixels:[PixelData], width:UInt, height:UInt)->UIImage
 {
     let bitsPerComponent:UInt = 8
     let bitsPerPixel:UInt = 32
     
     var data = pixels // Copy to mutable []
-    let providerRef = CGDataProviderCreateWithCFData(NSData(bytes: &data, length: data.count * sizeof(PixelData)))
+    let providerRef = CGDataProvider(data: Data(bytes: UnsafePointer<UInt8>(&data), count: data.count * sizeof(PixelData)))
     
-    let cgim = CGImageCreate(width, height, bitsPerComponent, bitsPerPixel, width * UInt(sizeof(PixelData)), rgbColorSpace,	bitmapInfo, providerRef, nil, true, kCGRenderingIntentDefault)
+    let cgim = CGImage(width: width, height: height, bitsPerComponent: bitsPerComponent, bitsPerPixel: bitsPerPixel, bytesPerRow: width * UInt(sizeof(PixelData)), space: rgbColorSpace,	bitmapInfo: bitmapInfo, provider: providerRef, decode: nil, shouldInterpolate: true, intent: kCGRenderingIntentDefault)
     
     return UIImage(CGImage: cgim);
 }
 
 var previousImage : CIImage?;
 
-func renderSwarmChemistry (swarmMembers : [SwarmMember]) -> UIImage
+func renderSwarmChemistry (_ swarmMembers : [SwarmMember]) -> UIImage
 {
-    var pixelArray = [PixelData](count: Constants.IMAGE_LENGTH, repeatedValue: PixelData(a: 255, r:0, g: 0, b: 0));
+    var pixelArray = [PixelData](repeating: PixelData(a: 255, r:0, g: 0, b: 0), count: Constants.IMAGE_LENGTH);
     
     for swarmMember in swarmMembers
     {
@@ -47,11 +47,11 @@ func renderSwarmChemistry (swarmMembers : [SwarmMember]) -> UIImage
         
         if pixelIndex < Constants.IMAGE_LENGTH
         {
-            let colorRef = CGColorGetComponents(swarmMember.genome.color.CGColor);
+            let colorRef = swarmMember.genome.color.cgColor.components;
             
-            pixelArray[pixelIndex].r = UInt8(255 * colorRef[0]);
-            pixelArray[pixelIndex].g = UInt8(255 * colorRef[1]);
-            pixelArray[pixelIndex].b = UInt8(255 * colorRef[2]);
+            pixelArray[pixelIndex].r = UInt8(255 * (colorRef?[0])!);
+            pixelArray[pixelIndex].g = UInt8(255 * (colorRef?[1])!);
+            pixelArray[pixelIndex].b = UInt8(255 * (colorRef?[2])!);
         }
     }
     

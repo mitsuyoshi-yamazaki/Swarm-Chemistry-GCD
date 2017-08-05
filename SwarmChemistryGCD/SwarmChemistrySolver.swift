@@ -13,11 +13,11 @@
 
 import Foundation
 
-func solveSwarmChemistry(swarmMembers : [SwarmMember]) -> [SwarmMember]
+func solveSwarmChemistry(_ swarmMembers : [SwarmMember]) -> [SwarmMember]
 {
     var returnArray = swarmMembers;
     
-    for var i : Int = 0; i < Constants.COUNT; i++
+    for i : Int in 0 ..< Constants.COUNT
     {
         var swarmMember : SwarmMember = swarmMembers[i];
  
@@ -72,10 +72,10 @@ func solveSwarmChemistry(swarmMembers : [SwarmMember]) -> [SwarmMember]
         }
         
         
-        if Double(rand() % 100) < (swarmMember.genome.c4_steering * 100.0)
+        if Double(arc4random() % 100) < (swarmMember.genome.c4_steering * 100.0)
         {
-            tempAx = tempAx + Double(rand() % 4) - 1.5;
-            tempAy = tempAy + Double(rand() % 4) - 1.5;
+            tempAx = tempAx + Double(arc4random() % 4) - 1.5;
+            tempAy = tempAy + Double(arc4random() % 4) - 1.5;
         }
         
         swarmMember.accelerate(ax: tempAx,
