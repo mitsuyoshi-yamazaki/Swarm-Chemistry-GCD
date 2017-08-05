@@ -32,74 +32,74 @@ private func imageFromARGB32Bitmap(_ pixels:[PixelData], width:UInt, height:UInt
     
     let cgim = CGImage(width: width, height: height, bitsPerComponent: bitsPerComponent, bitsPerPixel: bitsPerPixel, bytesPerRow: width * UInt(sizeof(PixelData)), space: rgbColorSpace,	bitmapInfo: bitmapInfo, provider: providerRef, decode: nil, shouldInterpolate: true, intent: kCGRenderingIntentDefault)
     
-    return UIImage(CGImage: cgim);
+    return UIImage(CGImage: cgim)
 }
 
-var previousImage : CIImage?;
+var previousImage : CIImage?
 
 func renderSwarmChemistry (_ swarmMembers : [SwarmMember]) -> UIImage
 {
-    var pixelArray = [PixelData](repeating: PixelData(a: 255, r:0, g: 0, b: 0), count: Constants.IMAGE_LENGTH);
+    var pixelArray = [PixelData](repeating: PixelData(a: 255, r:0, g: 0, b: 0), count: Constants.IMAGE_LENGTH)
     
     for swarmMember in swarmMembers
     {
-        let pixelIndex : Int = Int(ceil(swarmMember.y) * Constants.WIDTH + ceil(swarmMember.x));
+        let pixelIndex : Int = Int(ceil(swarmMember.y) * Constants.WIDTH + ceil(swarmMember.x))
         
         if pixelIndex < Constants.IMAGE_LENGTH
         {
-            let colorRef = swarmMember.genome.color.cgColor.components;
+            let colorRef = swarmMember.genome.color.cgColor.components
             
-            pixelArray[pixelIndex].r = UInt8(255 * (colorRef?[0])!);
-            pixelArray[pixelIndex].g = UInt8(255 * (colorRef?[1])!);
-            pixelArray[pixelIndex].b = UInt8(255 * (colorRef?[2])!);
+            pixelArray[pixelIndex].r = UInt8(255 * (colorRef?[0])!)
+            pixelArray[pixelIndex].g = UInt8(255 * (colorRef?[1])!)
+            pixelArray[pixelIndex].b = UInt8(255 * (colorRef?[2])!)
         }
     }
     
     let outputImage = imageFromARGB32Bitmap(pixelArray, UInt(Constants.WIDTH), UInt(Constants.HEIGHT))
     
-    return outputImage;
+    return outputImage
     
     /*
     
     // WIP - tinkering with blur filters and trails, too slow on A6 ipad
     
-    let ciContext = CIContext(options: nil);
-    let coreImage = CIImage(image: outputImage);
+    let ciContext = CIContext(options: nil)
+    let coreImage = CIImage(image: outputImage)
 
     if let tmp : CIImage = previousImage
     {
-        let filter = CIFilter(name: "CIGaussianBlur");
-        filter.setValue(tmp, forKey: kCIInputImageKey);
-        filter.setValue(0.15, forKey: "inputRadius");
+        let filter = CIFilter(name: "CIGaussianBlur")
+        filter.setValue(tmp, forKey: kCIInputImageKey)
+        filter.setValue(0.15, forKey: "inputRadius")
         
-        let filteredImageData = filter.valueForKey(kCIOutputImageKey) as CIImage;
+        let filteredImageData = filter.valueForKey(kCIOutputImageKey) as CIImage
         
-        let lightenFilter = CIFilter(name: "CIMaximumCompositing");
+        let lightenFilter = CIFilter(name: "CIMaximumCompositing")
         
-        lightenFilter.setValue(coreImage, forKey: "inputBackgroundImage");
-        lightenFilter.setValue(filteredImageData, forKey: kCIInputImageKey);
+        lightenFilter.setValue(coreImage, forKey: "inputBackgroundImage")
+        lightenFilter.setValue(filteredImageData, forKey: kCIInputImageKey)
         
-        let filteredImageData_2 = lightenFilter.valueForKey(kCIOutputImageKey) as CIImage;
-        let filteredImageRef_2 = ciContext.createCGImage(filteredImageData_2, fromRect: filteredImageData_2.extent());
+        let filteredImageData_2 = lightenFilter.valueForKey(kCIOutputImageKey) as CIImage
+        let filteredImageRef_2 = ciContext.createCGImage(filteredImageData_2, fromRect: filteredImageData_2.extent())
 
-        previousImage = CIImage(CGImage: filteredImageRef_2);
+        previousImage = CIImage(CGImage: filteredImageRef_2)
 
-        return UIImage(CGImage: filteredImageRef_2);
+        return UIImage(CGImage: filteredImageRef_2)
     }
     else
     {
     
-        let filter = CIFilter(name: "CIGaussianBlur");
-        filter.setValue(coreImage, forKey: kCIInputImageKey);
-        filter.setValue(0.5, forKey: "inputRadius");
+        let filter = CIFilter(name: "CIGaussianBlur")
+        filter.setValue(coreImage, forKey: kCIInputImageKey)
+        filter.setValue(0.5, forKey: "inputRadius")
         
-        let filteredImageData = filter.valueForKey(kCIOutputImageKey) as CIImage;
+        let filteredImageData = filter.valueForKey(kCIOutputImageKey) as CIImage
         
-        let filteredImageRef = ciContext.createCGImage(filteredImageData, fromRect: filteredImageData.extent());
+        let filteredImageRef = ciContext.createCGImage(filteredImageData, fromRect: filteredImageData.extent())
         
-        previousImage = CIImage(CGImage: filteredImageRef);
+        previousImage = CIImage(CGImage: filteredImageRef)
         
-        return UIImage(CGImage: filteredImageRef);
+        return UIImage(CGImage: filteredImageRef)
     }
     */
 }

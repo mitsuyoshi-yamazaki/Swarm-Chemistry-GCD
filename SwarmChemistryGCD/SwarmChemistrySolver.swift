@@ -15,21 +15,21 @@ import Foundation
 
 func solveSwarmChemistry(_ swarmMembers : [SwarmMember]) -> [SwarmMember]
 {
-    var returnArray = swarmMembers;
+    var returnArray = swarmMembers
     
     for i : Int in 0 ..< Constants.COUNT
     {
-        var swarmMember : SwarmMember = swarmMembers[i];
+        var swarmMember : SwarmMember = swarmMembers[i]
  
-        var localCentreX : Double = 0;
-        var localCentreY : Double = 0;
-        var localDx : Double = 0;
-        var localDy : Double = 0;
+        var localCentreX : Double = 0
+        var localCentreY : Double = 0
+        var localDx : Double = 0
+        var localDy : Double = 0
         
-        var tempAx : Double = 0;
-        var tempAy : Double = 0;
+        var tempAx : Double = 0
+        var tempAy : Double = 0
         
-        var distances = [Distance]();
+        var distances = [Distance]()
         
         for candidateNeighbour in swarmMembers
         {
@@ -37,64 +37,64 @@ func solveSwarmChemistry(_ swarmMembers : [SwarmMember]) -> [SwarmMember]
             
             if distance < swarmMember.genome.radius
             {
-                let candidateNeighbourDistance = max(distance, 0.0001);
+                let candidateNeighbourDistance = max(distance, 0.0001)
   
-                distances.append(Distance(distance: candidateNeighbourDistance, x: candidateNeighbour.x, y: candidateNeighbour.y));
+                distances.append(Distance(distance: candidateNeighbourDistance, x: candidateNeighbour.x, y: candidateNeighbour.y))
                 
-                localCentreX = localCentreX + candidateNeighbour.x;
-                localCentreY = localCentreY + candidateNeighbour.y;
-                localDx = localDx + candidateNeighbour.dx;
-                localDy = localDy + candidateNeighbour.dy;
+                localCentreX = localCentreX + candidateNeighbour.x
+                localCentreY = localCentreY + candidateNeighbour.y
+                localDx = localDx + candidateNeighbour.dx
+                localDy = localDy + candidateNeighbour.dy
             }
         }
         
-        localCentreX = localCentreX / Double(distances.count);
-        localCentreY = localCentreY / Double(distances.count);
-        localDx = localDx / Double(distances.count);
-        localDy = localDy / Double(distances.count);
+        localCentreX = localCentreX / Double(distances.count)
+        localCentreY = localCentreY / Double(distances.count)
+        localDx = localDx / Double(distances.count)
+        localDy = localDy / Double(distances.count)
         
         
         // do swarm chemisty....
         
-        tempAx = tempAx + (localCentreX - Double(swarmMember.x)) * swarmMember.genome.c1_cohesion;
-        tempAy = tempAy + (localCentreY - Double(swarmMember.y)) * swarmMember.genome.c1_cohesion;
+        tempAx = tempAx + (localCentreX - Double(swarmMember.x)) * swarmMember.genome.c1_cohesion
+        tempAy = tempAy + (localCentreY - Double(swarmMember.y)) * swarmMember.genome.c1_cohesion
         
-        tempAx = tempAx + (localDx - swarmMember.dx) * swarmMember.genome.c2_alignment;
-        tempAy = tempAy + (localDy - swarmMember.dy) * swarmMember.genome.c2_alignment;
+        tempAx = tempAx + (localDx - swarmMember.dx) * swarmMember.genome.c2_alignment
+        tempAy = tempAy + (localDy - swarmMember.dy) * swarmMember.genome.c2_alignment
         
         
         for neighbour in distances
         {
             let foo = neighbour.distance * swarmMember.genome.c3_seperation
             
-            tempAx = tempAx + Double(swarmMember.x - neighbour.x) / foo;
-            tempAy = tempAy + Double(swarmMember.y - neighbour.y) / foo;
+            tempAx = tempAx + Double(swarmMember.x - neighbour.x) / foo
+            tempAy = tempAy + Double(swarmMember.y - neighbour.y) / foo
         }
         
         
         if Double(arc4random() % 100) < (swarmMember.genome.c4_steering * 100.0)
         {
-            tempAx = tempAx + Double(arc4random() % 4) - 1.5;
-            tempAy = tempAy + Double(arc4random() % 4) - 1.5;
+            tempAx = tempAx + Double(arc4random() % 4) - 1.5
+            tempAy = tempAy + Double(arc4random() % 4) - 1.5
         }
         
         swarmMember.accelerate(ax: tempAx,
             ay: tempAy,
-            maxMove: swarmMember.genome.maximumSpeed);
+            maxMove: swarmMember.genome.maximumSpeed)
         
-        let distance = max(hypot(swarmMember.dx2, swarmMember.dy2), 0.00001);
+        let distance = max(hypot(swarmMember.dx2, swarmMember.dy2), 0.00001)
         
-        let accelerateMultiplier = (swarmMember.genome.normalSpeed - distance) / distance * swarmMember.genome.c5_paceKeeping;
+        let accelerateMultiplier = (swarmMember.genome.normalSpeed - distance) / distance * swarmMember.genome.c5_paceKeeping
         
         swarmMember.accelerate(
             ax: swarmMember.dx2 * accelerateMultiplier,
             ay: swarmMember.dy2 * accelerateMultiplier,
-            maxMove: swarmMember.genome.maximumSpeed);
+            maxMove: swarmMember.genome.maximumSpeed)
         
-        swarmMember.move();
+        swarmMember.move()
         
         returnArray[i] = swarmMember
     }
     
-    return returnArray; 
+    return returnArray 
 }

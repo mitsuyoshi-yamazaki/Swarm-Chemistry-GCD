@@ -10,14 +10,14 @@ import Foundation
 
 struct Distance
 {
-    var distance : Double;
-    var x : Double;
-    var y : Double;
+    var distance : Double
+    var x : Double
+    var y : Double
     
     init (distance : Double, x : Double, y : Double)
     {
-        self.distance = distance;
-        self.x = x;
-        self.y = y; 
+        self.distance = distance
+        self.x = x
+        self.y = y 
     }
 }

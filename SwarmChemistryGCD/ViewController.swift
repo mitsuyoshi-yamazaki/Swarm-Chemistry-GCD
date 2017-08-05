@@ -11,11 +11,11 @@ import UIKit
 class ViewController: UIViewController
 {
     
-    var selectedGenomeIndex : Int = 0;
+    var selectedGenomeIndex : Int = 0
     
-    let genomes : Array<SwarmGenome> = [Constants.genomeOne, Constants.genomeTwo, Constants.genomeThree, Constants.genomeFour];
+    let genomes : Array<SwarmGenome> = [Constants.genomeOne, Constants.genomeTwo, Constants.genomeThree, Constants.genomeFour]
     
-    var swarmMembers = [SwarmMember]();
+    var swarmMembers = [SwarmMember]()
     
     @IBOutlet private weak var renderView: SwarmRenderView!
     @IBOutlet private var propertyButtonBar: UISegmentedControl!
@@ -42,19 +42,19 @@ class ViewController: UIViewController
         
         for i in 0 ..< Constants.COUNT
         {
-            let genome : SwarmGenome = genomes[i % 4];
-            var swarmMember : SwarmMember = SwarmMember(genome: genome);
+            let genome : SwarmGenome = genomes[i % 4]
+            var swarmMember : SwarmMember = SwarmMember(genome: genome)
             
-            swarmMember.x = Double(Int(arc4random()) % width);
-            swarmMember.y = Double(Int(arc4random()) % height);
+            swarmMember.x = Double(Int(arc4random()) % width)
+            swarmMember.y = Double(Int(arc4random()) % height)
             
-            swarmMembers.append(swarmMember);
+            swarmMembers.append(swarmMember)
         }
         
-        setPropertSliderMinMax();
-        setPropertySliderValue();
+        setPropertSliderMinMax()
+        setPropertySliderValue()
         
-        dispatchSolve();    // TODO: stop when disappear
+        dispatchSolve()    // TODO: stop when disappear
     }
     
     override func shouldAutomaticallyForwardRotationMethods() -> Bool {
@@ -64,49 +64,49 @@ class ViewController: UIViewController
     func dispatchSolve()
     {
         DispatchQueue.global().async {
-            self.swarmMembers = solveSwarmChemistry(self.swarmMembers);
+            self.swarmMembers = solveSwarmChemistry(self.swarmMembers)
             self.renderView.swarmMembers = self.swarmMembers
             DispatchQueue.main.async {
                 self.renderView.setNeedsDisplay()
-                self.dispatchSolve();
+                self.dispatchSolve()
             }
         }
     }
     
     func setGenomeValue()
     {
-        genomes[selectedGenomeIndex].setPropertyValueByIndex(propertyValueSlider.value, propertyIndex: propertyButtonBar.selectedSegmentIndex);
+        genomes[selectedGenomeIndex].setPropertyValueByIndex(propertyValueSlider.value, propertyIndex: propertyButtonBar.selectedSegmentIndex)
     }
     
     func setPropertySliderValue()
     {
-        propertyValueSlider.value = genomes[selectedGenomeIndex].getPropertyValueByIndex(propertyButtonBar.selectedSegmentIndex);
+        propertyValueSlider.value = genomes[selectedGenomeIndex].getPropertyValueByIndex(propertyButtonBar.selectedSegmentIndex)
     }
     
     func setPropertSliderMinMax()
     {
-        propertyValueSlider.minimumValue = SwarmGenome.getMinMaxForProperty(propertyButtonBar.selectedSegmentIndex).min;
+        propertyValueSlider.minimumValue = SwarmGenome.getMinMaxForProperty(propertyButtonBar.selectedSegmentIndex).min
         
-        propertyValueSlider.maximumValue = SwarmGenome.getMinMaxForProperty(propertyButtonBar.selectedSegmentIndex).max;
+        propertyValueSlider.maximumValue = SwarmGenome.getMinMaxForProperty(propertyButtonBar.selectedSegmentIndex).max
     }
     
     // event handlers
     
     @IBAction func genomeSelectionButtonBarChangeHandler(_ sender: AnyObject)
     {
-        selectedGenomeIndex = genomeSelectionButtonBar.selectedSegmentIndex;
+        selectedGenomeIndex = genomeSelectionButtonBar.selectedSegmentIndex
         setPropertySliderValue()
     }
     
     @IBAction func propertyButtonBarChangeHandler(_ sender: AnyObject)
     {
-        setPropertSliderMinMax();
-        setPropertySliderValue();
+        setPropertSliderMinMax()
+        setPropertySliderValue()
     }
     
     @IBAction func propertySliderChangeHandler(_ sender: AnyObject)
     {
-        setGenomeValue();
+        setGenomeValue()
     }
 }
 

@@ -7,30 +7,30 @@
 //
 
 import Foundation
-import UIKit;
+import UIKit
 
 open class SwarmGenome
 {
-    open var color : UIColor;
+    open var color : UIColor
     
-    open var normalSpeed : Double = 1;
-    open var maximumSpeed : Double = 2;
-    open var radius : Double;
-    open var c1_cohesion : Double; // 1: 0 -> 5
-    open var c2_alignment : Double; // 2: 0 -> 1
-    open var c3_seperation : Double; // 3: 0 -> 100
-    open var c4_steering : Double; // 4: 0 -> 1
-    open var c5_paceKeeping : Double; // 5: 0 -> 1
+    open var normalSpeed : Double = 1
+    open var maximumSpeed : Double = 2
+    open var radius : Double
+    open var c1_cohesion : Double // 1: 0 -> 5
+    open var c2_alignment : Double // 2: 0 -> 1
+    open var c3_seperation : Double // 3: 0 -> 100
+    open var c4_steering : Double // 4: 0 -> 1
+    open var c5_paceKeeping : Double // 5: 0 -> 1
     
     init(color : UIColor, radius : Double, c1_cohesion : Double, c2_alignment : Double, c3_seperation : Double, c4_steering : Double, c5_paceKeeping : Double)
     {
-        self.color = color;
-        self.radius = radius;
-        self.c1_cohesion = c1_cohesion;
-        self.c2_alignment = c2_alignment;
-        self.c3_seperation = c3_seperation;
-        self.c4_steering = c4_steering;
-        self.c5_paceKeeping = c5_paceKeeping;
+        self.color = color
+        self.radius = radius
+        self.c1_cohesion = c1_cohesion
+        self.c2_alignment = c2_alignment
+        self.c3_seperation = c3_seperation
+        self.c4_steering = c4_steering
+        self.c5_paceKeeping = c5_paceKeeping
     }
     
     func setPropertyValueByIndex(_ newValue : Float, propertyIndex : Int)
@@ -38,69 +38,69 @@ open class SwarmGenome
         switch(propertyIndex)
         {
             case 0:
-                radius = Double(newValue);
+                radius = Double(newValue)
             case 1:
-                c1_cohesion = Double(newValue);
+                c1_cohesion = Double(newValue)
             case 2:
-                c2_alignment = Double(newValue);
+                c2_alignment = Double(newValue)
             case 3:
-                c3_seperation = Double(newValue);
+                c3_seperation = Double(newValue)
             case 4:
-                c4_steering = Double(newValue);
+                c4_steering = Double(newValue)
             case 5:
-                c5_paceKeeping = Double(newValue);
+                c5_paceKeeping = Double(newValue)
             default:
-                break;
+                break
         }
     }
     
     func getPropertyValueByIndex(_ propertyIndex : Int) -> Float
     {
-        var returnObject : Float?;
+        var returnObject : Float?
         
         switch(propertyIndex)
         {
             case 0:
-                returnObject = Float(radius);
+                returnObject = Float(radius)
             case 1:
-                returnObject = Float(c1_cohesion);
+                returnObject = Float(c1_cohesion)
             case 2:
-                returnObject = Float(c2_alignment);
+                returnObject = Float(c2_alignment)
             case 3:
-                returnObject = Float(c3_seperation);
+                returnObject = Float(c3_seperation)
             case 4:
-                returnObject = Float(c4_steering);
+                returnObject = Float(c4_steering)
             case 5:
-                returnObject = Float(c5_paceKeeping);
+                returnObject = Float(c5_paceKeeping)
             default:
-                returnObject = 0;
+                returnObject = 0
         }
 
-        return returnObject!;
+        return returnObject!
     }
     
     class func getMinMaxForProperty(_ propertyIndex : Int) -> (min: Float, max: Float)
     {
-        var returnObject : (min: Float, max: Float)?;
+        var returnObject : (min: Float, max: Float)?
         
         switch(propertyIndex)
         {
             case 0:
-                returnObject = (0, 100);
+                returnObject = (0, 100)
             case 1:
-                returnObject = (0, 5);
+                returnObject = (0, 5)
             case 2:
-                returnObject = (0, 1);
+                returnObject = (0, 1)
             case 3:
-                returnObject = (0, 100);
+                returnObject = (0, 100)
             case 4:
-                returnObject = (0, 1);
+                returnObject = (0, 1)
             case 5:
-                returnObject = (0, 1);
+                returnObject = (0, 1)
             default:
-                returnObject = (0, 0);
+                returnObject = (0, 0)
         }
         
-        return returnObject!;
+        return returnObject!
     }
 }
