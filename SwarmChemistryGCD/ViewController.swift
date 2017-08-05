@@ -25,7 +25,15 @@ class ViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool)
+    {
+        super.viewDidAppear(animated)
+        setupSwarm()
+    }
+    
+    private func setupSwarm() {
         SwarmMember.width = Double(renderView.frame.width) * Constants.DENSITY
         SwarmMember.height = Double(renderView.frame.height) * Constants.DENSITY
         
@@ -46,7 +54,7 @@ class ViewController: UIViewController
         setPropertSliderMinMax();
         setPropertySliderValue();
         
-        dispatchSolve();
+        dispatchSolve();    // TODO: stop when disappear
     }
     
     override func shouldAutomaticallyForwardRotationMethods() -> Bool {
