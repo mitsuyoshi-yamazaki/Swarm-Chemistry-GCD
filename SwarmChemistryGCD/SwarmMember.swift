@@ -53,16 +53,16 @@ struct SwarmMember
         }
     }
     
-    mutating func accelerate(#ax : Double, _ ay : Double, maxMove : Double)
+    mutating func accelerate(ax : Double, ay : Double, maxMove : Double)
     {
         dx2 += ax;
         dy2 += ay;
         
-        var d : Double = hypot(dx2, dy2);
+        let d : Double = hypot(dx2, dy2);
         
         if d > maxMove * maxMove
         {
-            var normalizationFactor : Double = maxMove / d;
+            let normalizationFactor : Double = maxMove / d;
             dx2 *= normalizationFactor;
             dy2 *= normalizationFactor;
         }

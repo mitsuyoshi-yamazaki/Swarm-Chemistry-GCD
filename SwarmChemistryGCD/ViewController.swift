@@ -14,12 +14,10 @@ class ViewController: UIViewController
     var selectedGenomeIndex : Int = 0;
     
     let genomes : Array<SwarmGenome> = [Constants.genomeOne, Constants.genomeTwo, Constants.genomeThree, Constants.genomeFour];
-
-    var image : UIImage?;
-
+    
     var swarmMembers = [SwarmMember]();
     
-    @IBOutlet weak var uiImageView: UIImageView!
+    @IBOutlet weak var renderView: SwarmRenderView!
     @IBOutlet var propertyButtonBar: UISegmentedControl!
     @IBOutlet var propertyValueSlider: UISlider!
     @IBOutlet var genomeSelectionButtonBar: UISegmentedControl!
@@ -27,6 +25,8 @@ class ViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        renderView.backgroundColor = UIColor.clear
         
         for i in 0 ..< Constants.COUNT
         {
@@ -47,26 +47,13 @@ class ViewController: UIViewController
     
     func dispatchSolve()
     {
-        Async.background
-        {
+        DispatchQueue.global().async {
             self.swarmMembers = solveSwarmChemistry(self.swarmMembers);
-        }
-        .main
-        {
-            self.dispatchRender();
-            self.dispatchSolve();
-        }
-    }
-    
-    func dispatchRender()
-    {
-        Async.background
-        {
-            self.image = renderSwarmChemistry(self.swarmMembers);
-        }
-        .main
-        {
-            self.uiImageView.image = self.image;
+            self.renderView.swarmMembers = self.swarmMembers
+            DispatchQueue.main.async {
+                self.renderView.setNeedsDisplay()
+                self.dispatchSolve();
+            }
         }
     }
     

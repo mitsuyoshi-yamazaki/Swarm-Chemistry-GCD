@@ -1,8 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.8" systemVersion="13E28" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="ipad9_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
-        <capability name="Constraints with attributes relative to the layout margin" minToolsVersion="6.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -14,37 +19,22 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6tJ-qd-Kci">
-                                <rect key="frame" x="60" y="60" width="480" height="480"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="1024" id="AQT-BD-v6V"/>
-                                    <constraint firstAttribute="height" constant="768" id="LzA-8V-3hQ"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="AQT-BD-v6V"/>
-                                        <exclude reference="LzA-8V-3hQ"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=regular">
-                                    <mask key="constraints">
-                                        <include reference="AQT-BD-v6V"/>
-                                        <include reference="LzA-8V-3hQ"/>
-                                    </mask>
-                                </variation>
-                            </imageView>
-                            <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="hWV-gJ-5dK">
-                                <rect key="frame" x="58" y="550" width="484" height="31"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="hWV-gJ-5dK">
+                                <rect key="frame" x="62" y="974" width="644" height="31"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="propertySliderChangeHandler:" destination="BYZ-38-t0r" eventType="valueChanged" id="dnG-mO-xAX"/>
                                 </connections>
                             </slider>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CPt-Hn-QxE">
-                                <rect key="frame" x="60" y="512" width="480" height="29"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3qv-Uq-2RC" customClass="SwarmRenderView" customModule="SwarmChemistryGCD" customModuleProvider="target">
+                                <rect key="frame" x="12" y="60" width="744" height="902"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CPt-Hn-QxE">
+                                <rect key="frame" x="40" y="926" width="688" height="29"/>
                                 <segments>
                                     <segment title="Radius"/>
                                     <segment title="Cohesion"/>
@@ -53,13 +43,13 @@
                                     <segment title="Steering"/>
                                     <segment title="Pace Keeping"/>
                                 </segments>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="propertyButtonBarChangeHandler:" destination="BYZ-38-t0r" eventType="valueChanged" id="jcX-Rv-Xv7"/>
                                 </connections>
                             </segmentedControl>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FeM-rL-nmv">
-                                <rect key="frame" x="60" y="6" width="480" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FeM-rL-nmv">
+                                <rect key="frame" x="40" y="20" width="688" height="29"/>
                                 <segments>
                                     <segment title="Genome One (Cyan)"/>
                                     <segment title="Genome Two (Red)"/>
@@ -71,24 +61,29 @@
                                 </connections>
                             </segmentedControl>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="CPt-Hn-QxE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="3Z1-J3-q8F"/>
+                            <constraint firstItem="CPt-Hn-QxE" firstAttribute="centerX" secondItem="3qv-Uq-2RC" secondAttribute="centerX" id="0g9-nb-PVJ"/>
                             <constraint firstItem="FeM-rL-nmv" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="20" id="3tV-JD-vER"/>
+                            <constraint firstItem="3qv-Uq-2RC" firstAttribute="top" secondItem="FeM-rL-nmv" secondAttribute="bottom" constant="12" id="7pX-cp-i56"/>
+                            <constraint firstItem="FeM-rL-nmv" firstAttribute="centerX" secondItem="3qv-Uq-2RC" secondAttribute="centerX" id="8Q0-Kj-IN4"/>
                             <constraint firstItem="hWV-gJ-5dK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="44" id="8Qp-dY-LFg"/>
+                            <constraint firstItem="CPt-Hn-QxE" firstAttribute="bottom" secondItem="3qv-Uq-2RC" secondAttribute="bottom" constant="-8" id="BTX-Jz-HBe"/>
                             <constraint firstAttribute="trailingMargin" secondItem="FeM-rL-nmv" secondAttribute="trailing" constant="20" id="Ies-zD-pv4"/>
                             <constraint firstItem="FeM-rL-nmv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="K1D-at-xFv"/>
-                            <constraint firstItem="hWV-gJ-5dK" firstAttribute="top" secondItem="CPt-Hn-QxE" secondAttribute="bottom" constant="20" id="Mq4-Wg-Euy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hWV-gJ-5dK" secondAttribute="trailing" constant="44" id="Re0-Y3-Ge1"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="CPt-Hn-QxE" secondAttribute="trailing" constant="20" id="aO2-GJ-G5y"/>
+                            <constraint firstItem="3qv-Uq-2RC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZKP-gX-ziN"/>
+                            <constraint firstItem="CPt-Hn-QxE" firstAttribute="leading" secondItem="3qv-Uq-2RC" secondAttribute="leading" constant="28" id="h0I-I4-f0F"/>
+                            <constraint firstItem="hWV-gJ-5dK" firstAttribute="top" secondItem="3qv-Uq-2RC" secondAttribute="bottom" constant="12" id="rjG-Sv-3RS"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hWV-gJ-5dK" secondAttribute="bottom" constant="20" id="wcN-Lw-8qE"/>
+                            <constraint firstItem="3qv-Uq-2RC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="12" id="xfy-X1-rUf"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="genomeSelectionButtonBar" destination="FeM-rL-nmv" id="kWY-ze-J89"/>
                         <outlet property="propertyButtonBar" destination="CPt-Hn-QxE" id="6Z4-Ju-DMp"/>
                         <outlet property="propertyValueSlider" destination="hWV-gJ-5dK" id="izU-X5-96k"/>
-                        <outlet property="uiImageView" destination="6tJ-qd-Kci" id="gQN-8P-t06"/>
+                        <outlet property="renderView" destination="3qv-Uq-2RC" id="Epc-Zw-TH9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
