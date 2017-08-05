@@ -31,10 +31,11 @@
                             </slider>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3qv-Uq-2RC" customClass="SwarmRenderView" customModule="SwarmChemistryGCD" customModuleProvider="target">
                                 <rect key="frame" x="12" y="60" width="744" height="902"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CPt-Hn-QxE">
                                 <rect key="frame" x="40" y="926" width="688" height="29"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <segments>
                                     <segment title="Radius"/>
                                     <segment title="Cohesion"/>
@@ -43,7 +44,6 @@
                                     <segment title="Steering"/>
                                     <segment title="Pace Keeping"/>
                                 </segments>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="propertyButtonBarChangeHandler:" destination="BYZ-38-t0r" eventType="valueChanged" id="jcX-Rv-Xv7"/>
                                 </connections>

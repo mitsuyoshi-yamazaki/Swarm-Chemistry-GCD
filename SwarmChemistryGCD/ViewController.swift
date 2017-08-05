@@ -25,9 +25,7 @@ class ViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-        renderView.backgroundColor = UIColor.clear
-        
+                
         for i in 0 ..< Constants.COUNT
         {
             let genome : SwarmGenome = genomes[i % 4];
