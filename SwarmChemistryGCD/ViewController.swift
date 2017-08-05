@@ -11,11 +11,11 @@ import UIKit
 class ViewController: UIViewController
 {
     
-    var selectedGenomeIndex : Int = 0
+    private var selectedGenomeIndex : Int = 0
     
-    let genomes : Array<SwarmGenome> = [Constants.genomeOne, Constants.genomeTwo, Constants.genomeThree, Constants.genomeFour]
+    private let genomes : Array<SwarmGenome> = [Constants.genomeOne, Constants.genomeTwo, Constants.genomeThree, Constants.genomeFour]
     
-    var swarmMembers = [SwarmMember]()
+    private var swarmMembers = [SwarmMember]()
     
     @IBOutlet private weak var renderView: SwarmRenderView!
     @IBOutlet private var propertyButtonBar: UISegmentedControl!
@@ -57,11 +57,7 @@ class ViewController: UIViewController
         dispatchSolve()    // TODO: stop when disappear
     }
     
-    override func shouldAutomaticallyForwardRotationMethods() -> Bool {
-        return false
-    }
-    
-    func dispatchSolve()
+    private func dispatchSolve()
     {
         DispatchQueue.global().async {
             self.swarmMembers = solveSwarmChemistry(self.swarmMembers)
@@ -73,17 +69,17 @@ class ViewController: UIViewController
         }
     }
     
-    func setGenomeValue()
+    private func setGenomeValue()
     {
         genomes[selectedGenomeIndex].setPropertyValueByIndex(propertyValueSlider.value, propertyIndex: propertyButtonBar.selectedSegmentIndex)
     }
     
-    func setPropertySliderValue()
+    private func setPropertySliderValue()
     {
         propertyValueSlider.value = genomes[selectedGenomeIndex].getPropertyValueByIndex(propertyButtonBar.selectedSegmentIndex)
     }
     
-    func setPropertSliderMinMax()
+    private func setPropertSliderMinMax()
     {
         propertyValueSlider.minimumValue = SwarmGenome.getMinMaxForProperty(propertyButtonBar.selectedSegmentIndex).min
         
