@@ -18,9 +18,7 @@ struct Constants
     static let genomeFour = SwarmGenome(color: UIColor.yellow, radius: 20, c1_cohesion: 0.1150, c2_alignment: 0.8, c3_seperation: 50, c4_steering: 0.25, c5_paceKeeping: 0.675);
     
     
-    static let WIDTH : Double = 1024 / 2;
-    static let HEIGHT : Double = 768 / 2;
+    static let DENSITY = 1.0;
     
-    static let IMAGE_LENGTH = Int(WIDTH * HEIGHT);
     static let COUNT = 800;
 }

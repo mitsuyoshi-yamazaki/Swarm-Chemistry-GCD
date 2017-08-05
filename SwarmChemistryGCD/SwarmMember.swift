@@ -10,6 +10,9 @@ import Foundation
 
 struct SwarmMember
 {
+    static var width: Double = 100.0
+    static var height: Double = 100.0
+    
     var genome : SwarmGenome;
     
     var x : Double = 0.0;
@@ -36,18 +39,18 @@ struct SwarmMember
         
         if y < 0
         {
-            y = Constants.HEIGHT;
+            y = SwarmMember.height
         }
-        else if y > Constants.HEIGHT
+        else if y > SwarmMember.height
         {
             y = 0;
         }
         
         if x < 0
         {
-            x = Constants.WIDTH
+            x = SwarmMember.width
         }
-        else if x > Constants.WIDTH
+        else if x > SwarmMember.width
         {
             x =  0;
         }

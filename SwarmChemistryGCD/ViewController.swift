@@ -17,22 +17,28 @@ class ViewController: UIViewController
     
     var swarmMembers = [SwarmMember]();
     
-    @IBOutlet weak var renderView: SwarmRenderView!
-    @IBOutlet var propertyButtonBar: UISegmentedControl!
-    @IBOutlet var propertyValueSlider: UISlider!
-    @IBOutlet var genomeSelectionButtonBar: UISegmentedControl!
+    @IBOutlet private weak var renderView: SwarmRenderView!
+    @IBOutlet private var propertyButtonBar: UISegmentedControl!
+    @IBOutlet private var propertyValueSlider: UISlider!
+    @IBOutlet private var genomeSelectionButtonBar: UISegmentedControl!
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-                
+        
+        SwarmMember.width = Double(renderView.frame.width) * Constants.DENSITY
+        SwarmMember.height = Double(renderView.frame.height) * Constants.DENSITY
+        
+        let width = Int(SwarmMember.width)
+        let height = Int(SwarmMember.height)
+        
         for i in 0 ..< Constants.COUNT
         {
             let genome : SwarmGenome = genomes[i % 4];
             var swarmMember : SwarmMember = SwarmMember(genome: genome);
             
-            swarmMember.x = Double(Int(arc4random()) % Int(Constants.WIDTH));
-            swarmMember.y = Double(Int(arc4random()) % Int(Constants.HEIGHT));
+            swarmMember.x = Double(Int(arc4random()) % width);
+            swarmMember.y = Double(Int(arc4random()) % height);
             
             swarmMembers.append(swarmMember);
         }
@@ -41,6 +47,10 @@ class ViewController: UIViewController
         setPropertySliderValue();
         
         dispatchSolve();
+    }
+    
+    override func shouldAutomaticallyForwardRotationMethods() -> Bool {
+        return false
     }
     
     func dispatchSolve()

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C73EFD51F361C1D00567BB0 /* SwarmRenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C73EFD41F361C1D00567BB0 /* SwarmRenderView.swift */; };
+		2C73EFD71F361FFC00567BB0 /* RenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C73EFD61F361FFC00567BB0 /* RenderViewController.swift */; };
 		3E8F328819A67DA000CC7E7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8F328719A67DA000CC7E7D /* AppDelegate.swift */; };
 		3E8F328A19A67DA000CC7E7D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8F328919A67DA000CC7E7D /* ViewController.swift */; };
 		3E8F328D19A67DA000CC7E7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E8F328B19A67DA000CC7E7D /* Main.storyboard */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		2C73EFD41F361C1D00567BB0 /* SwarmRenderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwarmRenderView.swift; sourceTree = "<group>"; };
+		2C73EFD61F361FFC00567BB0 /* RenderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderViewController.swift; sourceTree = "<group>"; };
 		3E8F328219A67DA000CC7E7D /* SwarmChemistryGCD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwarmChemistryGCD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E8F328619A67DA000CC7E7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E8F328719A67DA000CC7E7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -75,7 +77,9 @@
 				3E8F329719A67DA000CC7E7D /* SwarmChemistryGCDTests */,
 				3E8F328319A67DA000CC7E7D /* Products */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
+			tabWidth = 4;
 		};
 		3E8F328319A67DA000CC7E7D /* Products */ = {
 			isa = PBXGroup;
@@ -95,6 +99,7 @@
 				3E8F328719A67DA000CC7E7D /* AppDelegate.swift */,
 				3E8F328919A67DA000CC7E7D /* ViewController.swift */,
 				2C73EFD41F361C1D00567BB0 /* SwarmRenderView.swift */,
+				2C73EFD61F361FFC00567BB0 /* RenderViewController.swift */,
 				3E8F328B19A67DA000CC7E7D /* Main.storyboard */,
 				3E8F328E19A67DA000CC7E7D /* Images.xcassets */,
 				3E8F328519A67DA000CC7E7D /* Supporting Files */,
@@ -264,6 +269,7 @@
 				3E8F32A619A67EC400CC7E7D /* SwarmMember.swift in Sources */,
 				3E8F32AF19A6819D00CC7E7D /* SwarmChemistrySolver.swift in Sources */,
 				3E8F328819A67DA000CC7E7D /* AppDelegate.swift in Sources */,
+				2C73EFD71F361FFC00567BB0 /* RenderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

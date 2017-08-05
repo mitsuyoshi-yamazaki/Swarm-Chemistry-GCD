@@ -30,9 +30,15 @@
                                 </connections>
                             </slider>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3qv-Uq-2RC" customClass="SwarmRenderView" customModule="SwarmChemistryGCD" customModuleProvider="target">
-                                <rect key="frame" x="12" y="60" width="744" height="902"/>
+                                <rect key="frame" x="12" y="60" width="744" height="854"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zwu-BK-GH1">
+                                <rect key="frame" x="12" y="60" width="744" height="854"/>
+                                <connections>
+                                    <segue destination="MsE-8t-390" kind="embed" id="PJl-u4-Qrm"/>
+                                </connections>
+                            </containerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CPt-Hn-QxE">
                                 <rect key="frame" x="40" y="926" width="688" height="29"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -64,17 +70,23 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="CPt-Hn-QxE" firstAttribute="centerX" secondItem="3qv-Uq-2RC" secondAttribute="centerX" id="0g9-nb-PVJ"/>
+                            <constraint firstItem="zwu-BK-GH1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="12" id="16j-5n-Uq2"/>
                             <constraint firstItem="FeM-rL-nmv" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="20" id="3tV-JD-vER"/>
                             <constraint firstItem="3qv-Uq-2RC" firstAttribute="top" secondItem="FeM-rL-nmv" secondAttribute="bottom" constant="12" id="7pX-cp-i56"/>
                             <constraint firstItem="FeM-rL-nmv" firstAttribute="centerX" secondItem="3qv-Uq-2RC" secondAttribute="centerX" id="8Q0-Kj-IN4"/>
                             <constraint firstItem="hWV-gJ-5dK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="44" id="8Qp-dY-LFg"/>
-                            <constraint firstItem="CPt-Hn-QxE" firstAttribute="bottom" secondItem="3qv-Uq-2RC" secondAttribute="bottom" constant="-8" id="BTX-Jz-HBe"/>
+                            <constraint firstItem="CPt-Hn-QxE" firstAttribute="top" secondItem="3qv-Uq-2RC" secondAttribute="bottom" constant="12" id="8sa-Rl-ijD"/>
+                            <constraint firstItem="hWV-gJ-5dK" firstAttribute="top" secondItem="CPt-Hn-QxE" secondAttribute="bottom" constant="20" id="8x5-8w-Pnr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="FeM-rL-nmv" secondAttribute="trailing" constant="20" id="Ies-zD-pv4"/>
                             <constraint firstItem="FeM-rL-nmv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="K1D-at-xFv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hWV-gJ-5dK" secondAttribute="trailing" constant="44" id="Re0-Y3-Ge1"/>
+                            <constraint firstItem="zwu-BK-GH1" firstAttribute="top" secondItem="FeM-rL-nmv" secondAttribute="bottom" constant="12" id="RyC-dl-B14"/>
                             <constraint firstItem="3qv-Uq-2RC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZKP-gX-ziN"/>
+                            <constraint firstItem="CPt-Hn-QxE" firstAttribute="top" secondItem="zwu-BK-GH1" secondAttribute="bottom" constant="12" id="ZrF-1z-puO"/>
+                            <constraint firstItem="CPt-Hn-QxE" firstAttribute="top" secondItem="3qv-Uq-2RC" secondAttribute="bottom" constant="12" id="geq-1j-pp8"/>
                             <constraint firstItem="CPt-Hn-QxE" firstAttribute="leading" secondItem="3qv-Uq-2RC" secondAttribute="leading" constant="28" id="h0I-I4-f0F"/>
-                            <constraint firstItem="hWV-gJ-5dK" firstAttribute="top" secondItem="3qv-Uq-2RC" secondAttribute="bottom" constant="12" id="rjG-Sv-3RS"/>
+                            <constraint firstItem="zwu-BK-GH1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jHg-Ui-257"/>
+                            <constraint firstItem="CPt-Hn-QxE" firstAttribute="top" secondItem="3qv-Uq-2RC" secondAttribute="bottom" constant="12" id="lkw-TS-5pY"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hWV-gJ-5dK" secondAttribute="bottom" constant="20" id="wcN-Lw-8qE"/>
                             <constraint firstItem="3qv-Uq-2RC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="12" id="xfy-X1-rUf"/>
                         </constraints>
@@ -83,11 +95,37 @@
                         <outlet property="genomeSelectionButtonBar" destination="FeM-rL-nmv" id="kWY-ze-J89"/>
                         <outlet property="propertyButtonBar" destination="CPt-Hn-QxE" id="6Z4-Ju-DMp"/>
                         <outlet property="propertyValueSlider" destination="hWV-gJ-5dK" id="izU-X5-96k"/>
-                        <outlet property="renderView" destination="3qv-Uq-2RC" id="Epc-Zw-TH9"/>
+                        <outlet property="renderView" destination="3qv-Uq-2RC" id="t86-Ta-9V4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Render View Controller-->
+        <scene sceneID="Zlc-fS-rua">
+            <objects>
+                <viewController id="MsE-8t-390" customClass="RenderViewController" customModule="SwarmChemistryGCD" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lnW-LE-bq6">
+                        <rect key="frame" x="0.0" y="0.0" width="744" height="854"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sky-Hg-zUb">
+                                <rect key="frame" x="351" y="416.5" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Sky-Hg-zUb" firstAttribute="centerX" secondItem="lnW-LE-bq6" secondAttribute="centerX" id="5vD-rN-hTs"/>
+                            <constraint firstItem="Sky-Hg-zUb" firstAttribute="centerY" secondItem="lnW-LE-bq6" secondAttribute="centerY" id="Znw-qb-fxY"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s7m-gI-A5p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="865" y="143"/>
         </scene>
     </scenes>
 </document>

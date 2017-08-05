@@ -65,7 +65,7 @@ func solveSwarmChemistry(_ swarmMembers : [SwarmMember]) -> [SwarmMember]
         
         for neighbour in distances
         {
-            var foo = neighbour.distance * swarmMember.genome.c3_seperation
+            let foo = neighbour.distance * swarmMember.genome.c3_seperation
             
             tempAx = tempAx + Double(swarmMember.x - neighbour.x) / foo;
             tempAy = tempAy + Double(swarmMember.y - neighbour.y) / foo;
