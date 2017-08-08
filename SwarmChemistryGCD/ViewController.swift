@@ -34,8 +34,8 @@ class ViewController: UIViewController
     }
     
     private func setupSwarm() {
-        SwarmMember.width = Double(renderView.frame.width) * Constants.DENSITY
-        SwarmMember.height = Double(renderView.frame.height) * Constants.DENSITY
+        SwarmMember.width = Double(renderView.frame.width)
+        SwarmMember.height = Double(renderView.frame.height)
         
         let width = Int(SwarmMember.width)
         let height = Int(SwarmMember.height)
@@ -60,6 +60,10 @@ class ViewController: UIViewController
     private func dispatchSolve()
     {
         DispatchQueue.global().async {
+            for _ in 0..<5  // TODO: make it customizable
+            {
+                self.swarmMembers = solveSwarmChemistry(self.swarmMembers)
+            }
             self.swarmMembers = solveSwarmChemistry(self.swarmMembers)
             self.renderView.swarmMembers = self.swarmMembers
             DispatchQueue.main.async {
